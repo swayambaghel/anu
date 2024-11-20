@@ -40,6 +40,5 @@ function expandCard(index) {
     const cards = document.querySelectorAll('.card');
     const card = cards[index];
     
-    // Toggle the expanded class to show the larger image and caption
     card.classList.toggle('expanded');
 }
