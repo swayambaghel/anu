@@ -1,4 +1,4 @@
-/* Background Gradient */
+/* Body Styling */
 body {
     background: linear-gradient(to bottom, lightyellow, lightblue);
     font-family: Arial, sans-serif;
@@ -24,6 +24,7 @@ body {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
+    background-color: white;
 }
 
 input {
@@ -58,30 +59,70 @@ button:hover {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
+    justify-content: center;
 }
 
 .card {
-    width: 150px;
+    width: 200px;
     cursor: pointer;
     text-align: center;
     transition: all 0.3s ease;
+    border-radius: 15px;
+    padding: 15px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transform: scale(1);
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 .card img {
     width: 100%;
-    height: 100px;
+    height: 150px;
     object-fit: cover;
+    border-radius: 10px;
 }
 
 .card p {
     margin-top: 10px;
+    font-size: 1.2em;
+    color: #333;
+    font-weight: 600;
 }
 
-/* Expanded Card */
+/* Expanded Card Styling */
 .card.expanded {
-    width: 300px;
+    width: 350px;
+    height: auto;
 }
 
 .card.expanded img {
-    height: 200px;
+    height: 300px;
+    object-fit: cover;
+}
+
+.card.expanded p {
+    font-size: 1.5em;
+    font-weight: 700;
+    padding-top: 20px;
+}
+
+/* Transition Effects */
+.card {
+    transition: all 0.4s ease-in-out;
+}
+
+.card.expanded {
+    transition: all 0.6s ease-in-out;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .card {
+        width: 150px;
+    }
 }
