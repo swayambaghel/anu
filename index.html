@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown and Login</title>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+    <!-- Countdown Timer -->
+    <div id="countdown"></div>
+
+    <!-- Login Form -->
+    <div id="login-form" class="login-form">
+        <h2>Login</h2>
+        <form id="login">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+        <p id="error-message" class="error-message"></p>
+    </div>
+
+    <!-- Cards Display (Hidden Initially) -->
+    <div id="cards" class="cards" style="display: none;">
+        <div class="card" onclick="expandCard(0)">
+            <img src="image1.jpg" alt="Image 1">
+            <p class="caption">She became my angel ❤️</p>
+        </div>
+        <div class="card" onclick="expandCard(1)">
+            <img src="image2.jpg" alt="Image 2">
+            <p class="caption">To see you after so long was so precious for me.</p>
+        </div>
+        <!-- Add more cards similarly for each month -->
+        <!-- For each card, you need to have an image and a caption like shown above -->
+    </div>
+
+    <script src="scripts/scripts.js"></script>
+</body>
+</html>
