@@ -41,6 +41,7 @@ document.getElementById("login").addEventListener("submit", function(event) {
 
 // Card expansion functionality
 let currentlyExpanded = null;
+const overlay = document.querySelector('.overlay');
 
 function expandCard(index) {
     const cards = document.querySelectorAll('.card');
@@ -48,20 +49,37 @@ function expandCard(index) {
     
     // If clicking the same card, collapse it
     if (currentlyExpanded === clickedCard) {
-        clickedCard.classList.remove('expanded');
-        currentlyExpanded = null;
+        collapseCard();
         return;
     }
     
     // Collapse previously expanded card
     if (currentlyExpanded) {
-        currentlyExpanded.classList.remove('expanded');
+        collapseCard();
     }
     
     // Expand clicked card
     clickedCard.classList.add('expanded');
     currentlyExpanded = clickedCard;
-    
-    // Smooth scroll to the expanded card
-    clickedCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    overlay.style.display = 'block';
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling
 }
+
+function collapseCard() {
+    if (currentlyExpanded) {
+        currentlyExpanded.classList.remove('expanded');
+        currentlyExpanded = null;
+        overlay.style.display = 'none';
+        document.body.style.overflow = 'auto'; // Re-enable scrolling
+    }
+}
+
+// Close expanded card when clicking overlay
+overlay.addEventListener('click', collapseCard);
+
+// Close expanded card when pressing ESC key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        collapseCard();
+    }
+});
