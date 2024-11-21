@@ -68,7 +68,7 @@ button:hover {
 .cards {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 40px;
     width: 100%;
     align-items: center;
     padding: 20px;
@@ -76,11 +76,11 @@ button:hover {
 }
 
 .card {
-    width: 300px; /* Very small initial width */
-    aspect-ratio: 1.91/1; /* Initial ratio of 1.91:1 */
+    width: 300px;
+    aspect-ratio: 1.91/1;
     cursor: pointer;
     background-color: white;
-    border-radius: 15px;
+    border-radius: 3px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     transition: all 0.4s ease;
@@ -88,7 +88,7 @@ button:hover {
 }
 
 .card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-5px) rotate(-1deg);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
@@ -96,7 +96,7 @@ button:hover {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: height 0.4s ease;
+    transition: all 0.4s ease;
 }
 
 .card .month-label {
@@ -109,34 +109,104 @@ button:hover {
     color: #333;
     padding: 5px 0;
     transition: all 0.4s ease;
+    font-family: 'Courier New', monospace;
 }
 
 .card .caption {
-    display: none; /* Initially hide caption */
+    display: none;
     padding: 15px;
     text-align: center;
     font-size: 1em;
     color: #333;
     transition: all 0.4s ease;
     margin: 0;
+    font-family: 'Courier New', monospace;
 }
 
+/* Polaroid effect for expanded cards */
 .card.expanded {
-    width: 400px; /* Slightly larger when expanded */
-    aspect-ratio: 4/5; /* Changed to 4:5 when expanded */
+    width: 400px;
+    aspect-ratio: 4/5;
+    padding: 15px 15px 60px 15px;
+    background: #fff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    transform: rotate(-2deg);
+}
+
+.card.expanded:nth-child(even) {
+    transform: rotate(2deg);
+}
+
+.card.expanded:hover {
+    transform: rotate(0deg) translateY(-5px);
+}
+
+.card.expanded img {
+    width: 100%;
+    height: calc(100% - 60px);
+    object-fit: cover;
+    border-radius: 2px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
 .card.expanded .caption {
     display: block;
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 0.9em;
+    padding: 0 15px;
+    box-sizing: border-box;
     opacity: 1;
+    color: #666;
+}
+
+.card.expanded .month-label {
+    display: none;
+}
+
+/* Optional: Add a subtle texture to the Polaroid frame */
+.card.expanded::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, 
+        rgba(0,0,0,0.02) 25%, 
+        transparent 25%, 
+        transparent 75%, 
+        rgba(0,0,0,0.02) 75%
+    );
+    background-size: 4px 4px;
+    pointer-events: none;
+}
+
+/* Animation for expanding/collapsing */
+@keyframes expandPolaroid {
+    from { transform: scale(0.9) rotate(-5deg); opacity: 0.5; }
+    to { transform: scale(1) rotate(-2deg); opacity: 1; }
+}
+
+.card.expanded {
+    animation: expandPolaroid 0.3s ease-out forwards;
 }
 
 @media (max-width: 600px) {
     .card {
-        width: 250px; /* Smaller on mobile */
+        width: 250px;
     }
     
     .card.expanded {
-        width: 350px; /* Slightly smaller expanded version on mobile */
+        width: 300px;
+        padding: 10px 10px 50px 10px;
+    }
+    
+    .card.expanded .caption {
+        font-size: 0.8em;
+        bottom: 15px;
     }
 }
