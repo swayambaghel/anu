@@ -3,14 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Countdown and Login</title>
-    <link rel="stylesheet" href="styles/styles.css">
+    <title>Our Love Timeline</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Countdown Timer -->
     <div id="countdown"></div>
 
-    <!-- Login Form -->
     <div id="login-form" class="login-form">
         <h2>Login</h2>
         <form id="login">
@@ -21,19 +19,22 @@
         <p id="error-message" class="error-message"></p>
     </div>
 
-    <!-- Cards Display (Hidden Initially) -->
     <div id="cards" class="cards" style="display: none;">
         <div class="card" onclick="expandCard(0)">
-            <img src="images/November2023.jpg" alt="Image 1">
+            <img src="images/November2023.jpg" alt="November 2023 Memory">
             <p class="caption">She became my angel ❤️</p>
         </div>
         <div class="card" onclick="expandCard(1)">
-            <img src="images/November2023.jpg" alt="Image 2">
+            <img src="images/December2023.jpg" alt="December 2023 Memory">
             <p class="caption">To see you after so long was so precious for me.</p>
         </div>
-        <!-- Add more cards similarly for each month -->
+        <div class="card" onclick="expandCard(2)">
+            <img src="images/January2024.jpg" alt="January 2024 Memory">
+            <p class="caption">New year, same love ✨</p>
+        </div>
+        <!-- Add more cards for each month -->
     </div>
 
-    <script src="scripts/scripts.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
