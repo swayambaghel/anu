@@ -3,12 +3,9 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    height: 100vh;
-    flex-direction: column;
+    min-height: 100vh;
     overflow-y: auto;
+    position: relative;
 }
 
 #countdown {
@@ -73,6 +70,8 @@ button:hover {
     align-items: center;
     padding: 20px;
     box-sizing: border-box;
+    min-height: 100vh;
+    position: relative;
 }
 
 .card {
@@ -85,6 +84,7 @@ button:hover {
     overflow: hidden;
     transition: all 0.4s ease;
     position: relative;
+    z-index: 1;
 }
 
 .card:hover {
@@ -123,6 +123,18 @@ button:hover {
     font-family: 'Courier New', monospace;
 }
 
+/* Overlay for clicking outside expanded card */
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+}
+
 /* Polaroid effect for expanded cards */
 .card.expanded {
     width: 400px;
@@ -131,14 +143,19 @@ button:hover {
     background: #fff;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
     transform: rotate(-2deg);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
 }
 
 .card.expanded:nth-child(even) {
-    transform: rotate(2deg);
+    transform: translate(-50%, -50%) rotate(2deg);
 }
 
 .card.expanded:hover {
-    transform: rotate(0deg) translateY(-5px);
+    transform: translate(-50%, -50%) rotate(0deg);
 }
 
 .card.expanded img {
@@ -187,8 +204,14 @@ button:hover {
 
 /* Animation for expanding/collapsing */
 @keyframes expandPolaroid {
-    from { transform: scale(0.9) rotate(-5deg); opacity: 0.5; }
-    to { transform: scale(1) rotate(-2deg); opacity: 1; }
+    from { 
+        transform: translate(-50%, -50%) scale(0.9) rotate(-5deg); 
+        opacity: 0.5; 
+    }
+    to { 
+        transform: translate(-50%, -50%) rotate(-2deg); 
+        opacity: 1; 
+    }
 }
 
 .card.expanded {
