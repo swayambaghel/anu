@@ -1,55 +1,83 @@
-/* Reset and base styles */
 body {
     background: linear-gradient(to bottom, lightyellow, lightblue);
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    min-height: 100vh;
-    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+    flex-direction: column;
+    overflow-y: auto;
 }
 
-/* Fixed countdown positioning */
 #countdown {
     position: fixed;
     top: 20px;
     right: 20px;
     font-size: 2em;
     font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
     background: rgba(255, 255, 255, 0.9);
-    padding: 10px 20px;
+    padding: 10px 15px;
     border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     z-index: 1000;
 }
 
-/* Login form styles */
 .login-form {
     background: rgba(255, 255, 255, 0.9);
     padding: 30px;
     border-radius: 15px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     text-align: center;
-    width: 400px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    max-width: 400px;
+    width: 90%;
+    margin: 20px auto;
 }
 
-/* Cards container */
-.cards {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 40px;
-    padding: 100px 20px 40px;
+input {
+    margin: 10px 0;
+    padding: 12px;
+    width: 100%;
+    border-radius: 6px;
+    border: 1px solid #ddd;
     box-sizing: border-box;
 }
 
-/* Card styles */
+button {
+    padding: 12px 20px;
+    border-radius: 6px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.error-message {
+    color: red;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.cards {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
 .card {
-    width: 1080px;
-    height: 608px;
+    width: 300px; /* Very small initial width */
+    aspect-ratio: 1.91/1; /* Initial ratio of 1.91:1 */
     cursor: pointer;
     background-color: white;
     border-radius: 15px;
@@ -64,78 +92,51 @@ body {
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
-/* Card image */
 .card img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: all 0.4s ease;
+    transition: height 0.4s ease;
 }
 
-/* Month label */
 .card .month-label {
     position: absolute;
-    bottom: -40px;
+    bottom: -25px;
     left: 0;
     width: 100%;
     text-align: center;
-    font-size: 1.2em;
+    font-size: 0.9em;
     color: #333;
-    padding: 10px 0;
+    padding: 5px 0;
     transition: all 0.4s ease;
 }
 
-/* Caption */
 .card .caption {
-    padding: 20px;
+    display: none; /* Initially hide caption */
+    padding: 15px;
     text-align: center;
-    font-size: 1.1em;
+    font-size: 1em;
     color: #333;
-    opacity: 0;
-    height: 0;
     transition: all 0.4s ease;
     margin: 0;
 }
 
-/* Expanded card styles */
 .card.expanded {
-    height: 1350px;
+    width: 400px; /* Slightly larger when expanded */
+    aspect-ratio: 4/5; /* Changed to 4:5 when expanded */
 }
 
 .card.expanded .caption {
+    display: block;
     opacity: 1;
-    height: auto;
-    background: rgba(255, 255, 255, 0.9);
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-}
-
-.card.expanded img {
-    height: 100%;
-}
-
-/* Responsive design */
-@media (max-width: 1200px) {
-    .card {
-        width: 90vw;
-        height: calc(90vw * 0.563); /* Maintains aspect ratio */
-    }
-    
-    .card.expanded {
-        height: calc(90vw * 1.25); /* Maintains aspect ratio */
-    }
 }
 
 @media (max-width: 600px) {
-    #countdown {
-        font-size: 1.5em;
-        padding: 8px 15px;
+    .card {
+        width: 250px; /* Smaller on mobile */
     }
     
-    .login-form {
-        width: 90%;
-        padding: 20px;
+    .card.expanded {
+        width: 350px; /* Slightly smaller expanded version on mobile */
     }
 }
