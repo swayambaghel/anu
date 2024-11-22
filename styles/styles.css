@@ -1,13 +1,29 @@
+/* Animated gradient background */
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
 body {
-    background: linear-gradient(to bottom, rgb(255, 255, 112), rgb(24, 184, 238));
-    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
     min-height: 100vh;
     overflow-y: auto;
     position: relative;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(-45deg, #ff8ed9, #1a98e0, #ffe54f, #4089ff);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
 }
 
+/* Glass effect for countdown timer */
 #countdown {
     position: fixed;
     top: 20px;
@@ -16,52 +32,88 @@ body {
     font-weight: bold;
     margin-bottom: 20px;
     text-align: center;
-    background: rgba(255, 255, 255, 0.9);
-    padding: 10px 15px;
-    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 15px 25px;
+    border-radius: 15px;
     z-index: 1000;
+    color: #000;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
 }
 
+/* Brighter glass effect for login form */
 .login-form {
-    background: rgba(255, 255, 255, 0.9);
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 40px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
     text-align: center;
     max-width: 400px;
     width: 90%;
     margin: 20px auto;
+    color: #000;  /* Changed to black for better visibility */
 }
 
-input {
+.login-form h2 {
+    margin-bottom: 20px;
+    color: #000;  /* Changed to black */
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);  /* Lighter text shadow */
+    font-weight: bold;
+}
+
+.login-form input {
+    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: #000;  /* Changed to black */
     margin: 10px 0;
-    padding: 12px;
+    padding: 15px;
     width: 100%;
-    border-radius: 6px;
-    border: 1px solid #ddd;
+    border-radius: 10px;
     box-sizing: border-box;
+    transition: all 0.3s ease;
+    font-weight: 500;
 }
 
-button {
-    padding: 12px 20px;
-    border-radius: 6px;
-    background-color: #4caf87;
+.login-form input::placeholder {
+    color: rgba(0, 0, 0, 0.6);  /* Darker placeholder text */
+}
+
+.login-form input:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.5);
+    border-color: rgba(255, 255, 255, 0.6);
+}
+
+.login-form button {
+    padding: 12px 30px;
+    border-radius: 10px;
+    background: rgba(11, 117, 255, 0.8);  /* Made the button more opaque */
     color: white;
-    border: none;
+    border: 1px solid rgba(255, 255, 255, 0.3);
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    margin-top: 10px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
-button:hover {
-    background-color: #45a049;
+.login-form button:hover {
+    background: rgba(76, 175, 135, 0.9);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .error-message {
-    color: red;
+    color: #e74c3c;  /* Brighter red */
     font-weight: bold;
-    margin-top: 10px;
+    margin-top: 15px;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.3);
 }
-
 .cards {
     display: flex;
     flex-direction: column;
