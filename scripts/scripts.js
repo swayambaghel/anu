@@ -1,16 +1,16 @@
 function updateCountdown() {
     const now = new Date();
-    const currentYear = now.getFullYear();
     
-    // Set target date for 12:00 AM IST on November 23
-    let targetDate = new Date(`November 23, ${currentYear} 00:00:00 GMT+0530`);
-    
-    // If the target date has passed, set it for the next year
-    if (now > targetDate) {
-        targetDate = new Date(`November 23, ${currentYear + 1} 00:00:00 GMT+0530`);
+    // Target time: November 23, 12:00 AM IST (UTC+5:30)
+    const currentYear = now.getUTCFullYear();
+    let targetDateUTC = new Date(Date.UTC(currentYear, 10, 22, 18, 30)); // 22nd Nov 18:30 UTC = 23rd Nov 12:00 AM IST
+
+    // If the target date has already passed, move it to next year
+    if (now >= targetDateUTC) {
+        targetDateUTC = new Date(Date.UTC(currentYear + 1, 10, 22, 18, 30));
     }
-    
-    const diff = targetDate - now;
+
+    const diff = targetDateUTC - now;
 
     if (diff <= 0) {
         document.getElementById("countdown").textContent = "Countdown ended!";
@@ -29,10 +29,6 @@ function updateCountdown() {
 setInterval(updateCountdown, 1000);
 updateCountdown(); // Initial call
 
-
-// Update countdown every second
-setInterval(updateCountdown, 1000);
-updateCountdown(); // Initial call
 
 // Login Form Validation
 document.getElementById("login").addEventListener("submit", function(event) {
