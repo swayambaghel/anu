@@ -1,8 +1,16 @@
-// Countdown Timer
 function updateCountdown() {
-    const targetDate = new Date("2024-11-23T12:00:00");
-    const currentDate = new Date();
-    const diff = targetDate - currentDate;
+    const now = new Date();
+    const currentYear = now.getFullYear();
+    
+    // Set target date for 12:00 AM IST on November 23
+    let targetDate = new Date(`November 23, ${currentYear} 00:00:00 GMT+0530`);
+    
+    // If the target date has passed, set it for the next year
+    if (now > targetDate) {
+        targetDate = new Date(`November 23, ${currentYear + 1} 00:00:00 GMT+0530`);
+    }
+    
+    const diff = targetDate - now;
 
     if (diff <= 0) {
         document.getElementById("countdown").textContent = "Countdown ended!";
@@ -16,6 +24,11 @@ function updateCountdown() {
             `${days}d ${hours}h ${minutes}m ${seconds}s`;
     }
 }
+
+// Update countdown every second
+setInterval(updateCountdown, 1000);
+updateCountdown(); // Initial call
+
 
 // Update countdown every second
 setInterval(updateCountdown, 1000);
