@@ -1,6 +1,15 @@
+/* Modern gradient background with subtle animation */
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
 body {
-    background: linear-gradient(to bottom, rgb(255, 255, 112), rgb(24, 184, 238));
-    font-family: 'Arial', sans-serif;
+    background: linear-gradient(-45deg, #ffd1dc, #ff9ecd, #87ceeb, #64b5f6);
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+    font-family: 'Segoe UI', system-ui, sans-serif;
     margin: 0;
     padding: 0;
     min-height: 100vh;
@@ -8,88 +17,127 @@ body {
     position: relative;
 }
 
+/* Modern Glassmorphic Countdown Timer */
 #countdown {
     position: fixed;
     top: 20px;
     right: 20px;
-    font-size: 2em;
-    font-weight: bold;
-    margin-bottom: 20px;
-    text-align: center;
-    background: rgba(255, 255, 255, 0.9);
-    padding: 10px 15px;
-    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 20px 30px;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    font-size: 1.8em;
+    font-weight: 600;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     z-index: 1000;
+    transition: transform 0.3s ease;
 }
 
+#countdown:hover {
+    transform: translateY(-5px);
+}
+
+/* Modern Login Form */
 .login-form {
-    background: rgba(255, 255, 255, 0.9);
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 40px;
+    border-radius: 24px;
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.18);
     text-align: center;
     max-width: 400px;
     width: 90%;
-    margin: 20px auto;
+    margin: 40px auto;
+    transition: transform 0.3s ease;
+}
+
+.login-form:hover {
+    transform: translateY(-5px);
+}
+
+.login-form h2 {
+    color: white;
+    margin-bottom: 20px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 input {
-    margin: 10px 0;
-    padding: 12px;
     width: 100%;
-    border-radius: 6px;
-    border: 1px solid #ddd;
-    box-sizing: border-box;
+    padding: 15px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+input:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 button {
-    padding: 12px 20px;
-    border-radius: 6px;
-    background-color: #4caf87;
+    padding: 15px 30px;
+    border-radius: 12px;
+    background: linear-gradient(45deg, #ff69b4, #ff9ecd);
     color: white;
     border: none;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 button:hover {
-    background-color: #45a049;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
 }
 
 .error-message {
-    color: red;
-    font-weight: bold;
-    margin-top: 10px;
+    color: #ff4757;
+    font-weight: 500;
+    margin-top: 15px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
+/* Modern Cards Layout */
 .cards {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 40px;
-    width: 100%;
-    align-items: center;
-    padding: 20px;
+    padding: 40px;
     box-sizing: border-box;
-    min-height: 100vh;
-    position: relative;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
 .card {
-    width: 300px;
-    aspect-ratio: 1.91/1;
-    cursor: pointer;
-    background-color: white;
-    border-radius: 3px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 24px;
     overflow: hidden;
     transition: all 0.4s ease;
     position: relative;
-    z-index: 1;
+    aspect-ratio: 1.91/1;
+    cursor: pointer;
 }
 
 .card:hover {
-    transform: translateY(-5px) rotate(-1deg);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    transform: translateY(-10px) rotate(-2deg);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
 
 .card img {
@@ -101,135 +149,77 @@ button:hover {
 
 .card .month-label {
     position: absolute;
-    bottom: -25px;
+    bottom: 0;
     left: 0;
-    width: 100%;
-    text-align: center;
-    font-size: 0.9em;
+    right: 0;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 15px;
+    font-size: 1.1em;
+    font-weight: 600;
     color: #333;
-    padding: 5px 0;
-    transition: all 0.4s ease;
-    font-family: 'Courier New', monospace;
+    transform: translateY(100%);
+    transition: all 0.3s ease;
+}
+
+.card:hover .month-label {
+    transform: translateY(0);
 }
 
 .card .caption {
     display: none;
-    padding: 15px;
+    padding: 20px;
     text-align: center;
-    font-size: 1em;
-    color: #000000;
-    transition: all 0.4s ease;
-    margin: 0;
-    font-family: 'Courier New', monospace;
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: #333;
 }
 
-/* Overlay for clicking outside expanded card */
-.overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 2;
-}
-
-/* Polaroid effect for expanded cards */
+/* Expanded Card Styles */
 .card.expanded {
-    width: 400px;
-    aspect-ratio: 4/5;
-    padding: 15px 15px 60px 15px;
-    background: #fff;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    transform: rotate(-2deg);
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 3;
-}
-
-.card.expanded:nth-child(even) {
-    transform: translate(-50%, -50%) rotate(2deg);
-}
-
-.card.expanded:hover {
-    transform: translate(-50%, -50%) rotate(0deg);
+    width: 80%;
+    max-width: 600px;
+    height: auto;
+    aspect-ratio: 4/5;
+    background: white;
+    z-index: 1000;
+    padding: 20px;
+    border-radius: 30px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
 }
 
 .card.expanded img {
-    width: 100%;
-    height: calc(100% - 60px);
-    object-fit: cover;
-    border-radius: 2px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    height: 70%;
+    border-radius: 20px;
 }
 
 .card.expanded .caption {
     display: block;
-    position: absolute;
-    bottom: 20px;
-    left: 0;
-    width: 100%;
-    text-align: center;
-    font-size: 0.9em;
-    padding: 0 15px;
-    box-sizing: border-box;
-    opacity: 1;
-    color: #171717;
+    margin-top: 20px;
 }
 
-.card.expanded .month-label {
-    display: none;
+.overlay {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
 }
 
-/* Optional: Add a subtle texture to the Polaroid frame */
-.card.expanded::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(45deg, 
-        rgba(0,0,0,0.02) 25%, 
-        transparent 25%, 
-        transparent 75%, 
-        rgba(0,0,0,0.02) 75%
-    );
-    background-size: 4px 4px;
-    pointer-events: none;
-}
-
-/* Animation for expanding/collapsing */
-@keyframes expandPolaroid {
-    from { 
-        transform: translate(-50%, -50%) scale(0.9) rotate(-5deg); 
-        opacity: 0.5; 
+/* Responsive Design */
+@media (max-width: 768px) {
+    .cards {
+        grid-template-columns: 1fr;
+        padding: 20px;
     }
-    to { 
-        transform: translate(-50%, -50%) rotate(-2deg); 
-        opacity: 1; 
-    }
-}
 
-.card.expanded {
-    animation: expandPolaroid 0.3s ease-out forwards;
-}
-
-@media (max-width: 600px) {
-    .card {
-        width: 250px;
-    }
-    
     .card.expanded {
-        width: 300px;
-        padding: 10px 10px 50px 10px;
+        width: 95%;
+        padding: 15px;
     }
-    
-    .card.expanded .caption {
-        font-size: 0.8em;
-        bottom: 15px;
+
+    #countdown {
+        font-size: 1.4em;
+        padding: 15px 25px;
     }
 }
